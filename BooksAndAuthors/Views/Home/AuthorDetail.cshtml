@@ -1,0 +1,35 @@
+﻿@model BooksAndAuthors.Models.AuthorDetailVM
+@{
+    ViewBag.Title = "AuthorDetail";
+}
+
+<h2>@Model.Name</h2>
+<br />
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Hardback?</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BooksAndAuthors.Model.Book b in Model.Books)
+        {
+            <tr>
+                <td>@b.Title</td>
+                <td>
+                    @{if (b.IsHardback)
+                    { <span>Yes</span> }
+                    else
+                    {<span>No</span> }
+                }
+            </td>
+                <td>@Html.ActionLink("Edit Book", "EditBook", new { id = b.BookId }) </td>
+                <td>@Html.ActionLink("Delete Book", "DeleteBook", new { id = b.BookId }) </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div class="btn btn-success">@Html.ActionLink("Add Book", "AddBook", new { id = @Model.AuthorId })</div>

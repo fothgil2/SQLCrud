@@ -1,0 +1,32 @@
+﻿@model BooksAndAuthors.Models.EditBookVM
+@{
+    ViewBag.Title = "EditBook";
+}
+
+<form method="post">
+    @Html.LabelFor(x => x.Book.Title)
+    <br />
+    @Html.TextBoxFor(x => x.Book.Title)
+    <br />
+    <select name="IsHardback" id="IsHardback">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+    </select>
+    <br />
+    <select name="SelectedAuthor" id="SelectedAuthor">
+        @{foreach (var x in Model.Authors)
+        {
+            if (x.AuthorId == Model.SelectedAuthor)
+            {
+                <option selected value="@x.AuthorId">@x.Name</option>
+            }
+            else
+            {
+                <option value="@x.AuthorId">@x.Name</option>
+            }
+        }
+        }
+    </select> <br />
+    @Html.HiddenFor(x => x.Book.BookId)
+    <button class="btn btn-success" type="submit">Edit Book</button>
+</form>

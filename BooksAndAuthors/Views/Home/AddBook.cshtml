@@ -1,0 +1,20 @@
+﻿@model BooksAndAuthors.Models.AddBookVM
+@{
+    ViewBag.Title = "AddBook";
+}
+
+<h2>AddBook</h2>
+<form method="post">
+    @Html.LabelFor(x => x.Title)
+    <br />
+    @Html.TextBoxFor(x => x.Title)
+    <br />
+    Is This Book Hardback?
+    <br />
+    <select name="IsHardback" id="IsHardback">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+    </select>
+    @Html.HiddenFor(x => x.AuthorId) <br />
+    <button type="submit" class="btn btn-success">Add Book</button>
+</form>

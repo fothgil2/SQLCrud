@@ -1,0 +1,11 @@
+﻿@model BooksAndAuthors.Model.Book
+@{
+    ViewBag.Title = "DeleteView";
+}
+
+<h2>Confirm Delete</h2>
+
+Are you sure you wish to delete @Model.Title, written by @Model.Author.Name?
+<br />
+<div class="btn btn-success">@Html.ActionLink("Yes", "ConfirmDeleteBook", new { id = Model.BookId, authorId = Model.AuthorId })</div>
+<div class="btn btn-danger">@Html.ActionLink("No", "AuthorDetail", new { id = Model.AuthorId })</div>

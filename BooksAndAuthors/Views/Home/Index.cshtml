@@ -1,0 +1,32 @@
+﻿@model List<BooksAndAuthors.Model.Author>
+@{
+    ViewBag.Title = "Home Page";
+}
+@foreach(BooksAndAuthors.Model.Author a in Model)
+{
+<div class="well">
+    @Html.ActionLink(@a.Name, "AuthorDetail", new { id = @a.AuthorId }) , @a.Age, @{if(a.IsAlive == true){ <span>Alive</span> }
+        else { <span>Dead</span>}
+        }
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Hardback?</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BooksAndAuthors.Model.Book b in a.Books)
+            {
+                <tr>
+                    <td>@b.Title</td>
+                    <td>@{if (b.IsHardback)
+                    { <span>Yes</span> }
+                          else {<span>No</span> }
+                    }</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
